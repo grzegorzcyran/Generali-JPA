@@ -3,6 +3,7 @@ package edu.grcy.generalijpa.hr.repos;
 import edu.grcy.generalijpa.hr.model.Employee;
 import edu.grcy.generalijpa.hr.model.EmployeeDTO;
 
+import edu.grcy.generalijpa.hr.model.EmployeeJobDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -22,7 +23,15 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query(nativeQuery = true, name = "Employee.findAllNative")
     List<EmployeeDTO> findAllNative();
 
-    @Query("SELECT new edu.grcy.generalijpa.hr.model.EmployeeDTO(e.id, e.name, e.surname, e.salary, e.email, new edu.grcy.generalijpa.hr.model.JobDTO(j.title, j.minSalary, j.maxSalary)) FROM Employee e JOIN e.job j")
+    @Query("SELECT new edu.grcy.generalijpa.hr.model.EmployeeDTO(" +
+            "e.id, e.name, e.surname, e.salary, e.email, " +
+            "new edu.grcy.generalijpa.hr.model.JobDTO(j.title, j.minSalary, j.maxSalary)) " +
+            "FROM Employee e JOIN e.job j")
     List<EmployeeDTO> findAllEmployeeAndJobInfo();
 
+    @Query("SELECT new edu.grcy.generalijpa.hr.model.EmployeeJobDTO(" +
+            "e.id, e.name, e.surname, e.salary, e.email, " +
+            "j.title, j.minSalary, j.maxSalary, 'text') " +
+            "FROM Employee e JOIN e.job j")
+    List<EmployeeJobDTO> findAllEmployeeAndJobInfoFlat();
 }

@@ -2,6 +2,7 @@ package edu.grcy.generalijpa.hr.service;
 
 import edu.grcy.generalijpa.hr.model.Employee;
 import edu.grcy.generalijpa.hr.model.EmployeeDTO;
+import edu.grcy.generalijpa.hr.model.EmployeeJobDTO;
 import edu.grcy.generalijpa.hr.repos.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,4 +31,7 @@ public class EmployeeService {
         return employeeRepository.findAllEmployeeAndJobInfo();
     }
 
+    public List<EmployeeJobDTO> getAllEmployeesAndJobsFlat() {
+        return employeeRepository.findAllEmployeeAndJobInfoFlat();
+    }
 }

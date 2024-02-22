@@ -2,6 +2,7 @@ package edu.grcy.generalijpa.hr.rest;
 
 import edu.grcy.generalijpa.hr.model.Employee;
 import edu.grcy.generalijpa.hr.model.EmployeeDTO;
+import edu.grcy.generalijpa.hr.model.EmployeeJobDTO;
 import edu.grcy.generalijpa.hr.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -38,5 +39,10 @@ public class EmployeeRestController {
     @GetMapping(value = "/allEmployeeAndJob", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<EmployeeDTO>> getAllEmployeesAndJobs() {
         return ResponseEntity.ok(employeeService.getAllEmployeesAndJobs());
+    }
+
+    @GetMapping(value = "/allEmployeeAndJobFlat", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<EmployeeJobDTO>> getAllEmployeesAndJobsFlat() {
+        return ResponseEntity.ok(employeeService.getAllEmployeesAndJobsFlat());
     }
 }

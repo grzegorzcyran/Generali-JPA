@@ -8,3 +8,6 @@ GET http://localhost:8080/employees/allNative
 
 ###Get all with jobs
 GET http://localhost:8080/employees/allEmployeeAndJob
+
+###Get all with jobs flat
+GET http://localhost:8080/employees/allEmployeeAndJobFlat
