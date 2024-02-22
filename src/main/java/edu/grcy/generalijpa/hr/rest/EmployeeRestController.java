@@ -45,4 +45,9 @@ public class EmployeeRestController {
     public ResponseEntity<List<EmployeeJobDTO>> getAllEmployeesAndJobsFlat() {
         return ResponseEntity.ok(employeeService.getAllEmployeesAndJobsFlat());
     }
+
+    @GetMapping(value = "/salaryGreaterThan1000", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Employee>> getEmployeesWithSalaryGreaterThan() {
+        return ResponseEntity.ok(employeeService.getEmployeesWithSalaryGreaterThan());
+    }
 }
